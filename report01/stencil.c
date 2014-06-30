@@ -32,7 +32,6 @@ void compute(int **in, int **out, int n) {
                 in[i+1][j-1] + in[i+1][j] + in[i+1][j+1];
         }
     }
-
 }
 
 int main(int argc, char *argv[]) {
