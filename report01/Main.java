@@ -15,7 +15,7 @@ public class Main {
             long t1 = System.nanoTime();
             stencil.compute();
             long t2 = System.nanoTime();
-            System.out.format("%2d %f %f%n", i + 1, (t1 - t0) / 1e9, (t2 - t1) / 1e9);
+            System.out.format("%2d %f %f%n", i + 1, (t1 - t0) * 1e-6, (t2 - t1) * 1e-6);
             // System.gc();
         }
     }

@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
-double getCurrentTime() {
+double getCurrentMilliSeconds() {
     struct timeval tp;
     gettimeofday(&tp, NULL);
-    return tp.tv_sec + tp.tv_usec * 1.0E-6;
+    return tp.tv_sec * 1e3 + tp.tv_usec * 1e-3;
 }
 
 int **array_new(int n) {
@@ -45,12 +45,12 @@ int main(int argc, char *argv[]) {
     }
 
     for (int i = 0; i < try; i++) {
-        double t0 = getCurrentTime();
+        double t0 = getCurrentMilliSeconds();
         int **in = array_new(n);
         int **out = array_new(n);
-        double t1 = getCurrentTime();
+        double t1 = getCurrentMilliSeconds();
         compute(in, out, n);
-        double t2 = getCurrentTime();
+        double t2 = getCurrentMilliSeconds();
         printf("%2d %f %f\n", i + 1, t1 - t0, t2 - t1);
         array_delete(in, n);
         array_delete(out, n);
